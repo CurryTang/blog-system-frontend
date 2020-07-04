@@ -1,88 +1,46 @@
 import React from 'react'
 import Head from 'next/head'
-import Nav from '../components/nav'
+import {Button, Row, Col} from 'antd';
+import Header from '../components/Header';
+import ListComponent from '../components/List';
+import AuthorComponent from '../components/Author';
+import Footer from '../components/Footer';
+import axios from 'axios';
+import servicePath from '../config/apiurl';
 
-const Home = () => (
+const Home = (props) => (
   <div>
     <Head>
       <title>Home</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-
-    <Nav />
-
-    <div className="hero">
-      <h1 className="title">Welcome to Next.js!</h1>
-      <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
-      </p>
-
-      <div className="row">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Learn more about Next.js in the documentation.</p>
-        </a>
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Next.js Learn &rarr;</h3>
-          <p>Learn about Next.js by following an interactive tutorial!</p>
-        </a>
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Find other example boilerplates on the Next.js GitHub.</p>
-        </a>
-      </div>
+    <Header />
+    <div className="main-content">
+      <Row type="flex" justify="center">
+        <Col className="comm-left" xs={24} sm={24} md={16} lg={18} xl={14}>
+          <ListComponent list={props.data}/>
+        </Col>
+        <Col className="comm-right" xs={0} sm={0} md={7} lg={5} xl={4}>
+          <AuthorComponent />
+        </Col>
+      </Row>
     </div>
-
-    <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
-    `}</style>
+    <Footer />
+    
   </div>
 )
+
+// export async function getStaticProps() {
+// 	const response = await axios.get('http://127.0.0.1:7001/default/getAllArticles');
+// 	return {
+// 		data: response.data
+// 	};
+// }
+
+Home.getInitialProps = async () => {
+	  const response = await axios.get(servicePath.getAll);
+		return {data: response.data};
+	
+}
 
 export default Home

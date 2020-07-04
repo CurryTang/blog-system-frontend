@@ -1,0 +1,46 @@
+.list-title {
+    font-size: 1.5rem;
+    color: #1e90ff;
+    padding: 0 0.5rem;
+}
+
+.list-content {
+    padding: .5rem;
+    color: black;
+}
+
+.list-icon {
+    padding: .5rem 0;
+    color: #aaa;
+}
+
+.list-icon  span {
+    /* display: inline-block; */
+    padding: 0 0.75rem;
+}
+
+.avatar {
+    padding: 0.5rem;
+    margin: 0 auto;
+}
+
+.author-page {
+    text-align: center;
+}
+
+.author-page bottom {
+    margin-bottom: 1rem;
+}
+
+.footer-div {
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+    color: #888;
+}
+
+.bread-nav {
+    padding: 0.5rem;
+    border-bottom:1px solid #eee;
+    background-color: #e1f0ff;
+}
