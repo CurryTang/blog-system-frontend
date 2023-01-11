@@ -16,7 +16,7 @@
     "egg-bin": "^4.14.1",
     "egg-mysql": "^3.0.0",
     "highlight.js": "^9.18.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "markdown-navbar": "^1.4.0",
     "marked": "^0.8.0",
     "next": "9.2.1",
